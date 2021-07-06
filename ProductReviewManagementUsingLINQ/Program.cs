@@ -47,6 +47,9 @@ namespace ProductReviewManagementUsingLINQ
             //Count by Review
             Console.WriteLine();
             management.CountByReview(list);
+            //select only particular fields from the list
+            Console.WriteLine();
+            management.GetParticularFields(list);
         }
     }
 }

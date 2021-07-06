@@ -47,6 +47,20 @@ namespace ProductReviewManagementUsingLINQ
                 }
             }
         }
+        /// <summary>
+        /// select only particular fields from the list
+        /// </summary>
+        /// <param name="productReviews"></param>
+        public void GetParticularFields(List<ProductReview> productReviews)
+        {
+            var query = from products in productReviews
+                        select (products.ProductID, products.Review);
+
+            foreach (var item in query)
+            {
+                Console.WriteLine($"Product ID: {item.ProductID} Review: {item.Review}");
+            }
+        }
 
         /// <summary>
         /// prints the product review
