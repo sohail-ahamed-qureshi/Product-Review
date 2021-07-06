@@ -89,7 +89,13 @@ namespace ProductReviewManagementUsingLINQ
             management.SkipTopRecords(list);
             //printing the datatable
             management.PrintTable(dataTable);
-            
+            //print only rows whose like is true
+            management.PrintTrueTable(dataTable);
+            //average rating of each product
+            management.AverageRating(dataTable);
+
+
+
         }
     }
 }

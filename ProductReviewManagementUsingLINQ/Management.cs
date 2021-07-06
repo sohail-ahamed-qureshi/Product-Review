@@ -94,11 +94,40 @@ namespace ProductReviewManagementUsingLINQ
         {
             var Products = from products in dataTable.AsEnumerable() select (products.Field<int>("ProductID"),products.Field<int>("UserID"), products.Field<int>("Rating"),
                            products.Field<string>("Review"), products.Field<bool>("isLike"));
+            PrintDataTable(Products);
+        }
+        /// <summary>
+        /// printing datatable after linq operations
+        /// </summary>
+        /// <param name="products"></param>
+        private void PrintDataTable(EnumerableRowCollection<(int, int, int, string, bool)> products)
+        {
             Console.WriteLine("ProductID  UserID  Rating  Review  Like");
-            foreach (var item in Products)
+            foreach (var item in products)
             {
-                Console.WriteLine(item.Item1 +" "+item.Item2+" "+item.Item3+" "+item.Item4+" "+item.Item5);
+                Console.WriteLine(item.Item1 + " " + item.Item2 + " " + item.Item3 + " " + item.Item4 + " " + item.Item5);
             }
+        }
+        /// <summary>
+        /// custom method to print rows whose isLike is true
+        /// </summary>
+        /// <param name="dataTable"></param>
+        public void PrintTrueTable(DataTable dataTable)
+        {
+            var products = from product in dataTable.AsEnumerable() where (product.Field<bool>("isLike") == true)
+                           select(product.Field<int>("ProductID"), product.Field<int>("UserID"), product.Field<int>("Rating"),
+                           product.Field<string>("Review"), product.Field<bool>("isLike"));
+            PrintDataTable(products);
+        }
+        /// <summary>
+        /// Find average ratinf of eact product 
+        /// </summary>
+        /// <param name="dataTable"></param>
+        public void AverageRating(DataTable dataTable)
+        {
+            var average = (from product in dataTable.AsEnumerable()
+                            select (product.Field<int>("Rating"))).Average();
+            Console.WriteLine(average.ToString());
         }
     }
 }
