@@ -28,6 +28,25 @@ namespace ProductReviewManagementUsingLINQ
                         select products;
             Print(query);
         }
+        /// <summary>
+        /// groups the products by reviews
+        /// </summary>
+        /// <param name="productReviews"></param>
+        public void CountByReview(List<ProductReview> productReviews)
+        {
+            var query = from products in productReviews
+                        group products by products.Review;
+
+            foreach (var item in query)
+            {
+                Console.WriteLine($"Review : {item.Key}");
+                foreach (ProductReview items in item)
+                {
+                    Console.WriteLine($"Product ID: {items.ProductID}, User ID: {items.UserID}, Rating: {items.Rating}, Review: {items.Review}, Like: {items.isLike}");
+
+                }
+            }
+        }
 
         /// <summary>
         /// prints the product review
