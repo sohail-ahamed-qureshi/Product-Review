@@ -95,6 +95,8 @@ namespace ProductReviewManagementUsingLINQ
             management.AverageRating(dataTable);
             //print only whose review is best
             management.ReviewIsBest(dataTable);
+            //print only whose userID is 19
+            management.UserID(dataTable);
 
 
 

@@ -132,6 +132,18 @@ namespace ProductReviewManagementUsingLINQ
             PrintDataTable(products);
         }
         /// <summary>
+        /// print only products whose userid is 19
+        /// </summary>
+        /// <param name="dataTable"></param>
+        public void UserID(DataTable dataTable)
+        {
+            var products = from product in dataTable.AsEnumerable()
+                           where (product.Field<int>("UserID") == 19)
+                           select (product.Field<int>("ProductID"), product.Field<int>("UserID"), product.Field<int>("Rating"),
+                           product.Field<string>("Review"), product.Field<bool>("isLike"));
+            PrintDataTable(products);
+        }
+        /// <summary>
         /// Find average ratinf of eact product 
         /// </summary>
         /// <param name="dataTable"></param>
