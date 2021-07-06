@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 namespace ProductReviewManagementUsingLINQ
 {
@@ -83,6 +84,20 @@ namespace ProductReviewManagementUsingLINQ
             foreach (var item in productReviews)
             {
                 Console.WriteLine($"Product ID: {item.ProductID}, User ID: {item.UserID}, Rating: {item.Rating}, Review: {item.Review}, Like: {item.isLike}");
+            }
+        }
+        /// <summary>
+        /// method to read the datatable and print its rows
+        /// </summary>
+        /// <param name="dataTable"></param>
+        public void PrintTable(DataTable dataTable)
+        {
+            var Products = from products in dataTable.AsEnumerable() select (products.Field<int>("ProductID"),products.Field<int>("UserID"), products.Field<int>("Rating"),
+                           products.Field<string>("Review"), products.Field<bool>("isLike"));
+            Console.WriteLine("ProductID  UserID  Rating  Review  Like");
+            foreach (var item in Products)
+            {
+                Console.WriteLine(item.Item1 +" "+item.Item2+" "+item.Item3+" "+item.Item4+" "+item.Item5);
             }
         }
     }

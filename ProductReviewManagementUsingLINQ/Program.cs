@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Data;
 
 namespace ProductReviewManagementUsingLINQ
 {
@@ -38,7 +38,42 @@ namespace ProductReviewManagementUsingLINQ
                 new ProductReview(){ProductID = 24, UserID = 6, Rating =4, Review ="Good", isLike = true },
                 new ProductReview(){ProductID = 25, UserID = 6, Rating =2, Review ="Bad", isLike = false },
             };
-            
+            //table
+            DataTable dataTable = new DataTable();
+            //columns
+            dataTable.Columns.Add("ProductId", typeof(int));
+            dataTable.Columns.Add("UserId", typeof(int));
+            dataTable.Columns.Add("Rating", typeof(int));
+            dataTable.Columns.Add("Review", typeof(string));
+            dataTable.Columns.Add("isLike", typeof(bool));
+            //rows
+            dataTable.Rows.Add(1, 1, 3, "Bad", false);
+            dataTable.Rows.Add(2, 2, 2, "Bad", false);
+            dataTable.Rows.Add(3, 3, 1, "Bad", false);
+            dataTable.Rows.Add(4, 4, 5, "Good", true);
+            dataTable.Rows.Add(5, 5, 0, "Bad", false);
+            dataTable.Rows.Add(6, 6, 7, "Good", true);
+            dataTable.Rows.Add(7, 7, 10, "Best", true);
+            dataTable.Rows.Add(8, 8, 9, "Best", true);
+            dataTable.Rows.Add(9, 9, 8, "Best", true);
+            dataTable.Rows.Add(10, 10, 2, "Bad", false);
+            dataTable.Rows.Add(11, 11, 5, "Good", true);
+            dataTable.Rows.Add(12, 12, 9, "Best", true);
+            dataTable.Rows.Add(13, 13, 1, "Bad", false);
+            dataTable.Rows.Add(14, 14, 8, "Best", true);
+            dataTable.Rows.Add(15, 15, 3, "Bad", false);
+            dataTable.Rows.Add(16, 16, 7, "Good", true);
+            dataTable.Rows.Add(17, 17, 4, "Good", true);
+            dataTable.Rows.Add(18, 18, 2, "Bad", false);
+            dataTable.Rows.Add(19, 19, 3, "Bad", false);
+            dataTable.Rows.Add(20, 19, 1, "Bad", false);
+            dataTable.Rows.Add(21, 19, 10, "Best", true);
+            dataTable.Rows.Add(22, 19, 7, "Good", true);
+            dataTable.Rows.Add(23, 19, 8, "Best", true);
+            dataTable.Rows.Add(24, 19, 4, "Good", true);
+            dataTable.Rows.Add(25, 19, 2, "Bad", false);
+
+
             Management management = new Management();
             //gets top 3 products review from the list
             management.GetTopThree(list);
@@ -52,6 +87,9 @@ namespace ProductReviewManagementUsingLINQ
             management.GetParticularFields(list);
             //skips top 5 records from the list
             management.SkipTopRecords(list);
+            //printing the datatable
+            management.PrintTable(dataTable);
+            
         }
     }
 }
