@@ -91,7 +91,7 @@ namespace ProductReviewManagementUsingLINQ
             management.PrintTable(dataTable);
             //print only rows whose like is true
             management.PrintTrueTable(dataTable);
-            //average rating of each product
+            //average rating of each products
             management.AverageRating(dataTable);
 
 
