@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProductReviewManagementUsingLINQ
 {
@@ -8,6 +9,7 @@ namespace ProductReviewManagementUsingLINQ
         static void Main(string[] args)
         {
             Console.WriteLine("Product Review Management Using LINQ");
+            //list of product reviews 
             List<ProductReview> list = new List<ProductReview>
             {
                 new ProductReview(){ProductID = 1, UserID = 1, Rating =3, Review ="Good", isLike = true },
@@ -36,6 +38,10 @@ namespace ProductReviewManagementUsingLINQ
                 new ProductReview(){ProductID = 24, UserID = 6, Rating =4, Review ="Good", isLike = true },
                 new ProductReview(){ProductID = 25, UserID = 6, Rating =2, Review ="Good", isLike = false },
             };
+            
+            Management management = new Management();
+            //gets top 3 products review from the list
+            management.GetTopThree(list);
 
 
 
