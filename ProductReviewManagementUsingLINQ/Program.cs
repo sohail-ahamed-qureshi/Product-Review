@@ -93,6 +93,8 @@ namespace ProductReviewManagementUsingLINQ
             management.PrintTrueTable(dataTable);
             //average rating of each products
             management.AverageRating(dataTable);
+            //print only whose review is best
+            management.ReviewIsBest(dataTable);
 
 
 

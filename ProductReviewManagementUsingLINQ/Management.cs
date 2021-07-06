@@ -120,6 +120,18 @@ namespace ProductReviewManagementUsingLINQ
             PrintDataTable(products);
         }
         /// <summary>
+        /// print only whose review is Best
+        /// </summary>
+        /// <param name="dataTable"></param>
+        public void ReviewIsBest(DataTable dataTable)
+        {
+            var products = from product in dataTable.AsEnumerable()
+                           where (product.Field<string>("Review").Contains("Best"))
+                           select (product.Field<int>("ProductID"), product.Field<int>("UserID"), product.Field<int>("Rating"),
+                           product.Field<string>("Review"), product.Field<bool>("isLike"));
+            PrintDataTable(products);
+        }
+        /// <summary>
         /// Find average ratinf of eact product 
         /// </summary>
         /// <param name="dataTable"></param>
