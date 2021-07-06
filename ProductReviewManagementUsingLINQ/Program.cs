@@ -42,9 +42,8 @@ namespace ProductReviewManagementUsingLINQ
             Management management = new Management();
             //gets top 3 products review from the list
             management.GetTopThree(list);
-
-
-
+            //gets products with id 1,4,9 whose rating is above 3
+            management.RatingAboveThree(list);
         }
     }
 }

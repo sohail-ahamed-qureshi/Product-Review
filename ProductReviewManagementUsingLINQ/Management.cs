@@ -18,6 +18,18 @@ namespace ProductReviewManagementUsingLINQ
             Print(query);
         }
         /// <summary>
+        /// gets products with id 1,4,9 whose rating is above 3
+        /// </summary>
+        /// <param name="productReviews"></param>
+        public void RatingAboveThree(List<ProductReview> productReviews)
+        {
+            var query = from products in productReviews
+                        where (products.ProductID == 1 || products.ProductID == 4 || products.ProductID == 9) && products.Rating >= 3
+                        select products;
+            Print(query);
+        }
+
+        /// <summary>
         /// prints the product review
         /// </summary>
         /// <param name="productReviews"> list obtained after processing LINQ operations</param>
