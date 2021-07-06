@@ -61,6 +61,18 @@ namespace ProductReviewManagementUsingLINQ
                 Console.WriteLine($"Product ID: {item.ProductID} Review: {item.Review}");
             }
         }
+        /// <summary>
+        /// Skips top 5 records from the list
+        /// </summary>
+        /// <param name="productReviews"></param>
+        public void SkipTopRecords(List<ProductReview> productReviews)
+        {
+            var query = (from products in productReviews
+                         orderby products.Rating descending
+                         select products).Skip(5);
+
+            Print(query);
+        }
 
         /// <summary>
         /// prints the product review

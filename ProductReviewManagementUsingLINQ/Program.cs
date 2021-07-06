@@ -50,6 +50,8 @@ namespace ProductReviewManagementUsingLINQ
             //select only particular fields from the list
             Console.WriteLine();
             management.GetParticularFields(list);
+            //skips top 5 records from the list
+            management.SkipTopRecords(list);
         }
     }
 }
